@@ -226,5 +226,6 @@ packrat/lib*/
 */input_data/transmission_shp
 */input_data/infrastructure_data_csv
 */input_data/raster_data/
+*.csv
 
 /notebooks/clip_raster_extent.ipynb
