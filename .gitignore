@@ -218,3 +218,14 @@ rsconnect
 inst/shinyApp/temp.ini
 inst/shinyApp/test.ini
 packrat/lib*/
+
+# notebook outputs
+*.png
+*.tif
+*.cpg
+*.dbf
+*.prj 
+*.shp 
+*.shx 
+*.csv
+/notebooks/clip_raster_extent.ipynb
