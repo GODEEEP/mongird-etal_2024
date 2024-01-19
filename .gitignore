@@ -220,14 +220,14 @@ inst/shinyApp/test.ini
 packrat/lib*/
 
 # notebook outputs and inputs
-**/input_data/conus_shp
-**/input_data/wecc_boundary_shp
-**/input_data/wecc_shp
-**/input_data/transmission_shp
-**/input_data/infrastructure_data_csv
-**/raster_data/
-**/figures/infrastructure_barcharts
-**/figures/infrastructure_maps
-**/figures/layer_heatmaps
-**/figures/layer_maps
+*/input_data/conus_shp
+*/input_data/wecc_boundary_shp
+*/input_data/wecc_shp
+*/input_data/transmission_shp
+*/input_data/infrastructure_data_csv
+*/input_data/raster_data/
+*/infrastructure_barcharts
+*/infrastructure_maps
+*/layer_heatmaps
+*/layer_maps
 /notebooks/clip_raster_extent.ipynb
