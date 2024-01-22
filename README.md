@@ -46,8 +46,15 @@ notebooks to rerun the analysis and produce the post-processed data.
 
 |                Script Name                 |                                Description                                 |
 |:------------------------------------------:|:--------------------------------------------------------------------------:|
-|        .ipynb         |  |
-
+|        create_infrastructure_maps.ipynb         | Plots power plant sitings under each scenario |
+|        create_infrastructure_barplots.ipynb    | Calculates the total amount of land used by each technology in each state under each scenario |
+|        calculate_intersections.ipynb         | Calculates how much land from new power plant sitings in each scenario intersects with DACs, Important Farmland, 
+                                                    and areas in close proximity to Natural Areas |
+|        create_raster_intersection_maps.ipynb         | Plots new and retired power plant sitings in each scenario on top of DACs, Important Farmland, 
+                                                    and areas in close proximity to Natural Areas |                                                    
+|        create_raster_intersection_heatmaps.ipynb         | Visualizes how much land from new power plant sitings in each scenario intersects with DACs, Important    Farmland, and areas in close proximity to Natural Areas |
+|        calculate_suitable_area_scenarios.ipynb         | Calculates how much suitable land is available for solar and wind siting given different combinations of exclusions |
+|        create_siting_suitability_barcharts.ipynb         | Visualizes the comparison of available land for solar and wind siting by exclusion combinations |
 
 
 ## Reproduce my figures
