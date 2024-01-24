@@ -32,11 +32,11 @@ The post-processed files (resulting from the analysis scripts itemized below) ar
 ## Contributing modeling software
 |  Model   | Version |         Repository Link          | DOI |
 |:--------:|:-------:|:--------------------------------:|:---:|
-| CERF |  v2.11   |  |  |
-| GCAM-USA |  v5.3   | https://data.msdlive.org/records/r52tb-hez28 | https://doi.org/10.57931/1960381 |
-| reV |     |  |
+| CERF |  v2.3.2   | https://github.com/IMMM-SFA/cerf | https://doi.org/10.5281/zenodo.7735212 |
+| GCAM-USA |  v6.0   | https://github.com/JGCRI/gcam-core | https://doi.org/10.5281/zenodo.8010145 |
+| reV |  0.7.1   | https://github.com/NREL/reV | https://doi.org/10.5281/zenodo.8247528 |
 |   TELL   |  v1.1   | https://github.com/IMMM-SFA/tell | https://doi.org/10.5281/zenodo.8264217 |
-|   Gridview   |  v   | N/A | N/A|
+|   GridView   |  v10.3.7   | N/A | N/A|
 
 
 ## Reproduce my analysis
@@ -46,15 +46,8 @@ notebooks to rerun the analysis and produce the post-processed data.
 
 |                Script Name                 |                                Description                                 |
 |:------------------------------------------:|:--------------------------------------------------------------------------:|
-|        create_infrastructure_maps.ipynb         | Plots power plant sitings under each scenario |
-|        create_infrastructure_barplots.ipynb    | Calculates the total amount of land used by each technology in each state under each scenario |
-|        calculate_intersections.ipynb         | Calculates how much land from new power plant sitings in each scenario intersects with DACs, Important Farmland, 
-                                                    and areas in close proximity to Natural Areas |
-|        create_raster_intersection_maps.ipynb         | Plots new and retired power plant sitings in each scenario on top of DACs, Important Farmland, 
-                                                    and areas in close proximity to Natural Areas |                                                    
-|        create_raster_intersection_heatmaps.ipynb         | Visualizes how much land from new power plant sitings in each scenario intersects with DACs, Important    Farmland, and areas in close proximity to Natural Areas |
-|        calculate_suitable_area_scenarios.ipynb         | Calculates how much suitable land is available for solar and wind siting given different combinations of exclusions |
-|        create_siting_suitability_barcharts.ipynb         | Visualizes the comparison of available land for solar and wind siting by exclusion combinations |
+|        calculate_intersections.ipynb              | Calculates how much land from new power plant sitings in each scenario intersects with DACs, Important Farmland, and areas in close proximity to Natural Areas |
+|        calculate_suitable_area_scenarios.ipynb    | Calculates how much suitable land is available for solar and wind siting given different combinations of exclusions |
 
 
 ## Reproduce my figures
@@ -62,4 +55,8 @@ Use the following notebooks to reproduce the main and supplementary figures used
 
 | Figure Numbers |                Script Name                 |                                  Description                                   | 
 |:--------------:|:------------------------------------------:|:------------------------------------------------------------------------------:|
-|       2        |        .ipynb        |                     |
+| |        plot_infrastructure_maps.ipynb           | Plots power plant sitings under each scenario |
+| |        plot_infrastructure_barplots.ipynb       | Calculates the total amount of land used by each technology in each state under each scenario |
+| |        plot_raster_intersection_maps.ipynb      | Plots new and retired power plant sitings in each scenario on top of DACs, Important Farmland, and areas in close proximity to Natural Areas |                                                    
+| |        plot_raster_intersection_heatmaps.ipynb  | Visualizes how much land from new power plant sitings in each scenario intersects with DACs, Important Farmland, and areas in close proximity to Natural Areas |
+| |        plot_siting_suitability_barcharts.ipynb  | Visualizes the comparison of available land for solar and wind siting by exclusion combinations |
