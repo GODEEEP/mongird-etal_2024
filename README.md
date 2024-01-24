@@ -6,6 +6,7 @@
 
 \* corresponding author: kendall.mongird@pnnl.gov
 
+![Projected Power Plant Sitings under Decarbonization](https://github.com/GODEEEP/mongird-etal_2024_tbd/blob/main/figures/layer_maps/map_clean_grid_west_analysis_combined_environment.png)
 ## Abstract
 
 
