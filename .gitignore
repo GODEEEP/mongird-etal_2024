@@ -235,5 +235,8 @@ packrat/lib*/
 */input_data/renewable_capacity_factor_data
 *.csv
 
+*figures/
+
 /notebooks/clip_raster_extent.ipynb
 /notebooks/scratch.ipynb
+/notebooks/organize_experiment_output.ipynb
