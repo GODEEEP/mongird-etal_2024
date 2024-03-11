@@ -226,6 +226,14 @@ packrat/lib*/
 */input_data/transmission_shp
 */input_data/infrastructure_data_csv
 */input_data/raster_data/
+*/input_data/tmp
+*/input_data/gcam_data
+*/input_data/gridcerf
+*/input_data/west_raster_data
+*/input_data/compiled_raster_data
+*/input_data/siting_shp
+*/input_data/renewable_capacity_factor_data
 *.csv
 
 /notebooks/clip_raster_extent.ipynb
+/notebooks/scratch.ipynb
