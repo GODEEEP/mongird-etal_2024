@@ -13,14 +13,14 @@
 ## Journal reference
 
 
-## Code reference
-
 ## Data references
 ### Input data
-|       Dataset       |               Repository Link                |               DOI                |
-|:-------------------:|:--------------------------------------------:|:--------------------------------:|
-|   CERF Output       |  |  |
-|  GRIDCERF Layers    | | |
+|              Dataset              |                                   DOI                                    |
+|:---------------------------------:|:------------------------------------------------------------------------:|
+|  CERF GODEEEP Power Plant Output  |                                                                          |
+| GRIDCERF Geospatial Raster Layers |                     https://doi.org/10.57931/2281697                     |
+|      GCAM-USA GODEEEP Output      |                 https://doi.org/10.5281/zenodo.10642507                  |
+|  Renewable Capacity Factor Data   |                 https://doi.org/10.5281/zenodo.10214348                  | 
 
 ### Output data
 The post-processed files (resulting from the analysis scripts itemized below) are stored in the /data directory in this meta-repository.
@@ -42,13 +42,19 @@ The post-processed files (resulting from the analysis scripts itemized below) ar
 
 ## Reproduce my analysis
 Clone this repository to get access to the notebooks used to conduct the analysis. You'll also need 
-to download the input files from the accompanying data repository (). Once you have the input datasets downloaded you can use the following 
-notebooks to rerun the analysis and produce the post-processed data. 
+to download the input files into the `data/input_data` directory. Each notebook that requires input data will specify where to download the data. 
+Once you have the input datasets downloaded you can use the following 
+notebooks to rerun the analysis and produce the post-processed data wich is stored in the `data/output_data` directory. 
 
-|                Script Name                 |                                Description                                 |
-|:------------------------------------------:|:--------------------------------------------------------------------------:|
-|        calculate_intersections.ipynb              | Calculates how much land from new power plant sitings in each scenario intersects with DACs, Important Farmland, and areas in close proximity to Natural Areas |
-|        calculate_suitable_area_scenarios.ipynb    | Calculates how much suitable land is available for solar and wind siting given different combinations of exclusions |
+To complete the analysis end to end, run the following notebooks:
+
+| Script Type      |               Script Name               |                                                                       Description                                                                       |
+|:-----------------|:---------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| Data preparation |    prepare_cerf_siting_output.ipynb     | Reads in and prepares CERF power plant siting output results for both the business-as-usual and net zero scenarios from the GODEEEP project experiment. |
+| Data preparation |       prepare_raster_data.ipynb         |                           Prepares geospatial raster layers from the GRIDCERF database for western interconnection analysis.                            |
+| Data preparation |         prepare_gcam_data.ipynb         |      Collects GCAM-USA results from the GODEEEP experiment and saves total generation by technology and state required in 2050 for each scenario.       |
+| Data analysis    |      calculate_intersections.ipynb      | Calculates how much land from new power plant sitings in each scenario intersects with DACs, Important Farmland, and areas in close proximity to Natural Areas |
+| Data analysis    | calculate_suitable_area_scenarios.ipynb | Calculates how much suitable land is available for solar and wind siting given different combinations of exclusions |
 
 
 ## Reproduce my figures
@@ -56,8 +62,9 @@ Use the following notebooks to reproduce the main and supplementary figures used
 
 | Figure Numbers |                Script Name                 |                                  Description                                   | 
 |:--------------:|:------------------------------------------:|:------------------------------------------------------------------------------:|
-| |        plot_infrastructure_maps.ipynb           | Plots power plant sitings under each scenario |
-| |        plot_infrastructure_barplots.ipynb       | Calculates the total amount of land used by each technology in each state under each scenario |
-| |        plot_raster_intersection_maps.ipynb      | Plots new and retired power plant sitings in each scenario on top of DACs, Important Farmland, and areas in close proximity to Natural Areas |                                                    
-| |        plot_raster_intersection_heatmaps.ipynb  | Visualizes how much land from new power plant sitings in each scenario intersects with DACs, Important Farmland, and areas in close proximity to Natural Areas |
-| |        plot_siting_suitability_barcharts.ipynb  | Visualizes the comparison of available land for solar and wind siting by exclusion combinations |
+| 1 |        plot_infrastructure_barplots.ipynb       | Barcharts of (1) new power plant capacity through 2050 by state and techonlogy and (2) land usage (km-squared) of new power plants through 2050 by state and technology |
+| 2 |        plot_infrastructure_maps.ipynb           | Maps of new power plant sitings and retirements under each scenario |
+| 3 |        plot_raster_intersection_maps.ipynb      | Maps of new and retired power plant sitings in each scenario on top of DACs, Important Farmland, and areas in close proximity to Natural Areas |                                                    
+| 4 |        plot_raster_intersection_heatmaps.ipynb  | Heatmaps of how much land from new power plant sitings in each scenario intersects with DACs, Important Farmland, and areas in close proximity to Natural Areas |
+| 5 |        plot_renewable_suitability_maps.ipynb  | Plots the comparison of available generation for solar and wind siting by land exclusion scenario combinations |
+| 6 |        plot_generation_suitability_comparison_charts.ipynb  | Plots the comparison of available generation for solar and wind siting by land exclusion scenario combinations |
