@@ -6,7 +6,7 @@
 
 \* corresponding author: kendall.mongird@pnnl.gov
 
-![Projected Power Plant Sitings under Decarbonization](https://github.com/GODEEEP/mongird-etal_2024_tbd/blob/main/figures/infrastructure_maps/fig_2_net_zero_sitings_by_year_2050.png)
+![Projected Power Plant Sitings under Decarbonization](https://github.com/GODEEEP/mongird-etal_2024_tbd/blob/main/figures/infrastructure_maps/map_net_zero_2050.png)
 ## Abstract
 
 As the Western United States transitions towards a decarbonized grid and net-zero economy, the siting of power plants will become a critical consideration with substantial implications for land use. The recent expansion of renewables has led to an escalation in opposition towards large-scale projects due in part to the extensive development footprint and land-use conversion. Understanding where future developments are likely to accumulate, and identifying the potential conflicts and land-use tradeoffs that may arise will be key to identifying feasible net zero pathways. Through spatially explicit integrated modeling and data analysis under dynamic climate and socioeconomic conditions, we investigate show how projected 1 km2 siting results intersect with diverse landscapes and identify regions that may see higher siting opposition. We also show that indiscriminate and extensive siting restrictions on solar and wind can have large repercussions on the ability to meet generation goals required to achieve a net zero economy. 
