@@ -1,9 +1,8 @@
 
 # mongird-etal_2024_tbd
 
-**Title:**Indiscriminate Land-Based Siting Constraints on Renewable Generation Impact the Ability to Achieve Net Zero in the Western US
+**Title:** Indiscriminate Land-Based Siting Constraints on Renewable Generation Impact the Ability to Achieve Net Zero in the Western US
 
-**Authors:**
 
 \* corresponding author: kendall.mongird@pnnl.gov
 
