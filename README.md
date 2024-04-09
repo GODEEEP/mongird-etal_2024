@@ -1,23 +1,26 @@
 
 # mongird-etal_2024_tbd
 
-**How do natural resource availability, technology competition, siting costs, siting policy constraints, transmission constraints, and equity goals interact to determine feasible infrastructure expansion pathways to achieve decarbonization?**
+**Title:**Indiscriminate Land-Based Siting Constraints on Renewable Generation Impact the Ability to Achieve Net Zero in the Western US
 
+**Authors:**
 
 \* corresponding author: kendall.mongird@pnnl.gov
 
-![Projected Power Plant Sitings under Decarbonization](https://github.com/GODEEEP/mongird-etal_2024_tbd/blob/main/figures/layer_maps/map_clean_grid_west_analysis_combined_environment.png)
+![Projected Power Plant Sitings under Decarbonization](https://github.com/GODEEEP/mongird-etal_2024_tbd/blob/main/figures/infrastructure_maps/map_clean_grid_2050.png.png)
 ## Abstract
 
+As the Western United States transitions towards a decarbonized grid and net-zero economy, the siting of power plants will become a critical consideration with substantial implications for land use. The recent expansion of renewables has led to an escalation in opposition towards large-scale projects due in part to the extensive development footprint and land-use conversion. Understanding where future developments are likely to accumulate, and identifying the potential conflicts and land-use tradeoffs that may arise will be key to identifying feasible net zero pathways. Through spatially explicit integrated modeling and data analysis under dynamic climate and socioeconomic conditions, we investigate show how projected 1 km2 siting results intersect with diverse landscapes and identify regions that may see higher siting opposition. We also show that indiscriminate and extensive siting restrictions on solar and wind can have large repercussions on the ability to meet generation goals required to achieve a net zero economy. 
 
 ## Journal reference
 
+[to be filled in upon publication]
 
 ## Data references
 ### Input data
 |              Dataset              |                                   DOI                                    |
 |:---------------------------------:|:------------------------------------------------------------------------:|
-|  CERF GODEEEP Power Plant Output  |                                                                          |
+|  CERF GODEEEP Power Plant Output  |                          [coming soon]                                   |
 | GRIDCERF Geospatial Raster Layers |                     https://doi.org/10.57931/2281697                     |
 |      GCAM-USA GODEEEP Output      |                 https://doi.org/10.5281/zenodo.10642507                  |
 |  Renewable Capacity Factor Data   |                 https://doi.org/10.5281/zenodo.10214348                  | 
