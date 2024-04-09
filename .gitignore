@@ -235,7 +235,6 @@ packrat/lib*/
 */input_data/renewable_capacity_factor_data
 *.csv
 
-*figures/
 
 *.idea
 
