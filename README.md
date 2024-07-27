@@ -19,7 +19,7 @@ As the Western United States transitions towards a decarbonized grid and net-zer
 ### Input data
 |              Dataset              |                                   DOI                                    |
 |:---------------------------------:|:------------------------------------------------------------------------:|
-|  CERF GODEEEP Power Plant Output  |                          [coming soon]                                   |
+|  CERF GODEEEP Power Plant Sitings  |                          https://doi.org/10.5281/zenodo.10999083                                   |
 | GRIDCERF Geospatial Raster Layers |                     https://doi.org/10.57931/2281697                     |
 |      GCAM-USA GODEEEP Output      |                 https://doi.org/10.5281/zenodo.10642507                  |
 |  Renewable Capacity Factor Data   |                 https://doi.org/10.5281/zenodo.10214348                  | 
@@ -56,6 +56,7 @@ To complete the analysis end to end, run the following notebooks:
 | Data preparation |       prepare_raster_data.ipynb         |                           Prepares geospatial raster layers from the GRIDCERF database for western interconnection analysis.                            |
 | Data preparation |         prepare_gcam_data.ipynb         |      Collects GCAM-USA results from the GODEEEP experiment and saves total generation by technology and state required in 2050 for each scenario.       |
 | Data analysis    |      calculate_intersections.ipynb      | Calculates how much land from new power plant sitings in each scenario intersects with DACs, Important Farmland, and areas in close proximity to Natural Areas |
+| Data analysis    |      calculate_dac_fossil_replacements.ipynb      | Calculates how many federally-identified DACs are projected to see both new renewable sitings and retirment of fossil fuel generation |
 | Data analysis    | calculate_suitable_area_scenarios.ipynb | Calculates how much suitable land is available for solar and wind siting given different combinations of exclusions |
 
 
