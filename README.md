@@ -1,15 +1,16 @@
 
-# mongird-etal_2024_tbd
+# mongird-etal_2024_commun_earth_environ
 
-**Title:** Indiscriminate Land-Based Siting Constraints on Renewable Generation Impact the Ability to Achieve Net Zero in the Western US
+**Title:** High-resolution analysis of power plant land requirements for net zero in the Western United States indicates coordinated land use policies will be essential
 
 
 \* corresponding author: kendall.mongird@pnnl.gov
 
-![Projected Power Plant Sitings under Decarbonization](https://github.com/GODEEEP/mongird-etal_2024_tbd/blob/main/figures/infrastructure_maps/map_net_zero_2050.png)
+![Projected Power Plant Sitings under Decarbonization](https://github.com/GODEEEP/mongird-etal_2024_tbd/blob/main/figures/fig_2_sitings_by_scenario_year.png)
+
 ## Abstract
 
-As the Western United States transitions towards a decarbonized grid and net-zero economy, the siting of power plants will become a critical consideration with substantial implications for land use. The recent expansion of renewables has led to an escalation in opposition towards large-scale projects due in part to the extensive development footprint and land-use conversion. Understanding where future developments are likely to accumulate, and identifying the potential conflicts and land-use tradeoffs that may arise will be key to identifying feasible net zero pathways. Through spatially explicit integrated modeling and data analysis under dynamic climate and socioeconomic conditions, we investigate show how projected 1 km2 siting results intersect with diverse landscapes and identify regions that may see higher siting opposition. We also show that indiscriminate and extensive siting restrictions on solar and wind can have large repercussions on the ability to meet generation goals required to achieve a net zero economy. 
+Transitioning towards a decarbonized power grid and net-zero economy will require unprecedented expansion of energy infrastructure, leading to extensive development footprints and land use conversion. Understanding where future power plant sitings are likely to take place and identifying the potential conflicts and land-use tradeoffs that may arise will be key to identifying feasible pathways and evaluating regional planning coordination needs. Through spatially explicit integrated modeling we develop projected 1 km2 resolution power plant sitings in the Western United States (US) for both business-as-usual and net zero pathways. We find that 30% more land will be needed for solar and wind infrastructure to achieve a net zero economy compared to a business-as-usual economy and that 75% of that development is projected to be located within 10 km of natural areas. Additionally, we find California to be the most vulnerable Western US state to evolving siting constraints.
 
 ## Journal reference
 
@@ -19,7 +20,7 @@ As the Western United States transitions towards a decarbonized grid and net-zer
 ### Input data
 |              Dataset              |                                   DOI                                    |
 |:---------------------------------:|:------------------------------------------------------------------------:|
-|  CERF GODEEEP Power Plant Sitings  |                          https://doi.org/10.5281/zenodo.10999083                                   |
+|  CERF GODEEEP Power Plant Sitings  |                          https://doi.org/10.5281/zenodo.13695663                                |
 | GRIDCERF Geospatial Raster Layers |                     https://doi.org/10.57931/2281697                     |
 |      GCAM-USA GODEEEP Output      |                 https://doi.org/10.5281/zenodo.10642507                  |
 |  Renewable Capacity Factor Data   |                 https://doi.org/10.5281/zenodo.10214348                  | 
@@ -68,6 +69,5 @@ Use the following notebooks to reproduce the main and supplementary figures used
 | 1 |        plot_infrastructure_barplots.ipynb       | Barcharts of (1) new power plant capacity through 2050 by state and techonlogy and (2) land usage (km-squared) of new power plants through 2050 by state and technology |
 | 2 |        plot_infrastructure_maps.ipynb           | Maps of new power plant sitings and retirements under each scenario |
 | 3 |        plot_raster_intersection_maps.ipynb      | Maps of new and retired power plant sitings in each scenario on top of DACs, Important Farmland, and areas in close proximity to Natural Areas |                                                    
-| 4 |        plot_raster_intersection_heatmaps.ipynb  | Heatmaps of how much land from new power plant sitings in each scenario intersects with DACs, Important Farmland, and areas in close proximity to Natural Areas |
-| 5 |        plot_renewable_suitability_maps.ipynb  | Plots the comparison of available generation for solar and wind siting by land exclusion scenario combinations |
-| 6 |        plot_generation_suitability_comparison_charts.ipynb  | Plots the comparison of available generation for solar and wind siting by land exclusion scenario combinations |
+| 4 |        plot_renewable_suitability_maps.ipynb  | Plots the comparison of available generation for solar and wind siting by land exclusion scenario combinations |
+| 5 |        plot_generation_suitability_comparison_charts.ipynb  | Plots the comparison of available generation for solar and wind siting by land exclusion scenario combinations |
