@@ -1,0 +1,45 @@
+region,tech_type,Year,value,scenario,units,region_name
+AZ,Solar PV,2050,38726215.11,business_as_usual_ira_ccs_climate,gen_mwh,arizona
+AZ,Wind,2050,23656359.17,business_as_usual_ira_ccs_climate,gen_mwh,arizona
+CA,Solar PV,2050,71452412.78,business_as_usual_ira_ccs_climate,gen_mwh,california
+CA,Wind,2050,76810416.39,business_as_usual_ira_ccs_climate,gen_mwh,california
+CO,Solar PV,2050,35213749.39,business_as_usual_ira_ccs_climate,gen_mwh,colorado
+CO,Wind,2050,46506095.83,business_as_usual_ira_ccs_climate,gen_mwh,colorado
+ID,Solar PV,2050,1450510.28,business_as_usual_ira_ccs_climate,gen_mwh,idaho
+ID,Wind,2050,11330298.31,business_as_usual_ira_ccs_climate,gen_mwh,idaho
+MT,Solar PV,2050,9565910.45,business_as_usual_ira_ccs_climate,gen_mwh,montana
+MT,Wind,2050,90729609.17,business_as_usual_ira_ccs_climate,gen_mwh,montana
+NM,Solar PV,2050,16497420.22,business_as_usual_ira_ccs_climate,gen_mwh,new_mexico
+NM,Wind,2050,31960175.28,business_as_usual_ira_ccs_climate,gen_mwh,new_mexico
+NV,Solar PV,2050,32457867.08,business_as_usual_ira_ccs_climate,gen_mwh,nevada
+NV,Wind,2050,7748934.14,business_as_usual_ira_ccs_climate,gen_mwh,nevada
+OR,Solar PV,2050,5830005.94,business_as_usual_ira_ccs_climate,gen_mwh,oregon
+OR,Wind,2050,18830924.25,business_as_usual_ira_ccs_climate,gen_mwh,oregon
+UT,Solar PV,2050,88928596.56,business_as_usual_ira_ccs_climate,gen_mwh,utah
+UT,Wind,2050,25959990.28,business_as_usual_ira_ccs_climate,gen_mwh,utah
+WA,Solar PV,2050,4353518.41,business_as_usual_ira_ccs_climate,gen_mwh,washington
+WA,Wind,2050,17409637.83,business_as_usual_ira_ccs_climate,gen_mwh,washington
+WY,Solar PV,2050,17371399.42,business_as_usual_ira_ccs_climate,gen_mwh,wyoming
+WY,Wind,2050,81004905.0,business_as_usual_ira_ccs_climate,gen_mwh,wyoming
+AZ,Solar PV,2050,48699201.22,net_zero_ira_ccs_climate,gen_mwh,arizona
+AZ,Wind,2050,27752747.22,net_zero_ira_ccs_climate,gen_mwh,arizona
+CA,Solar PV,2050,115502531.67,net_zero_ira_ccs_climate,gen_mwh,california
+CA,Wind,2050,121274529.17,net_zero_ira_ccs_climate,gen_mwh,california
+CO,Solar PV,2050,49239752.44,net_zero_ira_ccs_climate,gen_mwh,colorado
+CO,Wind,2050,70774379.44,net_zero_ira_ccs_climate,gen_mwh,colorado
+ID,Solar PV,2050,1905583.04,net_zero_ira_ccs_climate,gen_mwh,idaho
+ID,Wind,2050,12609890.47,net_zero_ira_ccs_climate,gen_mwh,idaho
+MT,Solar PV,2050,16717511.25,net_zero_ira_ccs_climate,gen_mwh,montana
+MT,Wind,2050,131012816.11,net_zero_ira_ccs_climate,gen_mwh,montana
+NM,Solar PV,2050,24131511.31,net_zero_ira_ccs_climate,gen_mwh,new_mexico
+NM,Wind,2050,47690850.0,net_zero_ira_ccs_climate,gen_mwh,new_mexico
+NV,Solar PV,2050,42333837.25,net_zero_ira_ccs_climate,gen_mwh,nevada
+NV,Wind,2050,9780478.69,net_zero_ira_ccs_climate,gen_mwh,nevada
+OR,Solar PV,2050,8841840.58,net_zero_ira_ccs_climate,gen_mwh,oregon
+OR,Wind,2050,26721766.89,net_zero_ira_ccs_climate,gen_mwh,oregon
+UT,Solar PV,2050,116274044.56,net_zero_ira_ccs_climate,gen_mwh,utah
+UT,Wind,2050,32885691.94,net_zero_ira_ccs_climate,gen_mwh,utah
+WA,Solar PV,2050,6986026.67,net_zero_ira_ccs_climate,gen_mwh,washington
+WA,Wind,2050,24931334.08,net_zero_ira_ccs_climate,gen_mwh,washington
+WY,Solar PV,2050,21468980.61,net_zero_ira_ccs_climate,gen_mwh,wyoming
+WY,Wind,2050,102556313.33,net_zero_ira_ccs_climate,gen_mwh,wyoming
