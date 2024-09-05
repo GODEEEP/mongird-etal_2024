@@ -1,0 +1,1555 @@
+<?xml version="1.0"?>
+<queries>
+ <aQuery>
+  <all-regions/>
+  <supplyDemandQuery title="Final energy by detailed end-use sector and fuel">
+   <axis1 name="sector">sector</axis1>
+   <axis2 name="Year">demand-physical[@vintage]</axis2>
+   <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and ((@name='building' or @name='industry' or @name='transportation') or (exists(child::keyword/@final-energy)))]//*[@type='input' and not(contains(@name, 'trn') or @name='limestone' or @name='process heat cement' or @name='industrial energy use' or @name='industrial feedstocks' or @name='renewable' or @name='oil-credits')]/demand-physical[@unit='EJ']/node()</xPath>
+   <comments/>
+  </supplyDemandQuery>
+ </aQuery>
+ <aQuery>
+  <supplyDemandQuery title="inputs by tech">
+   <axis1 name="input">input</axis1>
+   <axis2 name="Year">demand-physical[@vintage]</axis2>
+   <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector']/*[@type='subsector']/*[@type='technology']/*[@type='input']/demand-physical/node()</xPath>
+   <comments/>
+  </supplyDemandQuery>
+ </aQuery>
+ <aQuery>
+  <supplyDemandQuery title="water consumption by state, sector, basin (includes desal)">
+   <axis1 name="technology">technology</axis1>
+   <axis2 name="Year">physical-output[@vintage]</axis2>
+   <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector']/*[@type='subsector']/*[@type='technology']/*[@type='output' (:collapse:)
+                and contains(@name,'water_td') and ends-with(@name,'_C')]/physical-output/node()</xPath>
+   <comments/>
+  </supplyDemandQuery>
+ </aQuery>
+ <aQuery>
+  <supplyDemandQuery title="water withdrawals by state, sector, basin (includes desal)">
+   <axis1 name="technology">technology</axis1>
+   <axis2 name="Year">physical-output[@vintage]</axis2>
+   <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector']/*[@type='subsector']/*[@type='technology']/*[@type='output' (:collapse:)
+                and contains(@name,'water_td') and ends-with(@name,'_W')]/physical-output/node()</xPath>
+   <comments/>
+  </supplyDemandQuery>
+ </aQuery>
+ <aQuery>
+  <all-regions/>
+  <supplyDemandQuery title="elec gen by gen tech and cooling tech and vintage">
+   <axis1 name="technology">technology</axis1>
+   <axis2 name="Year">physical-output[@vintage]</axis2>
+   <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and (@name='electricity' or @name='elect_td_bld' or
+                  contains(@name,'elec_')) and not(contains(@name, 'water_td'))]/
+                  *[@type='subsector' and not (@name='elect_td_bld')]/
+                  *[@type='technology' and not(@name='biomass (conv)' or @name='biomass (conv CCS)' or @name='biomass (IGCC)' or @name='biomass (IGCC CCS)'
+                                   or @name='coal (conv pul)' or @name='coal (conv pul CCS)' or @name='coal (IGCC)' or @name='coal (IGCC CCS)'
+                                   or @name='gas (steam/CT)' or @name='gas (CC)' or @name='gas (CC CCS)'
+                                   or @name='refined liquids (steam/CT)' or @name='refined liquids (CC)' or @name='refined liquids (CC CCS)'
+                                   or @name='geothermal' or @name='Gen_II_LWR' or @name='Gen_III'
+                                   or @name='CSP' or @name='CSP_storage')]/
+                  *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+   <comments/>
+   <labelRewriteList append-values="false">
+    <level name="sector">
+     <rewrite from="elec_gas (CC CCS)" to="electricity"/>
+     <rewrite from="elec_coal (conv pul)" to="electricity"/>
+     <rewrite from="elec_biomass (IGCC CCS)" to="electricity"/>
+     <rewrite from="elec_coal (IGCC CCS)" to="electricity"/>
+     <rewrite from="elec_gas (CC)" to="electricity"/>
+     <rewrite from="elec_coal (conv pul CCS)" to="electricity"/>
+     <rewrite from="elec_CSP" to="electricity"/>
+     <rewrite from="elec_Gen_II_LWR" to="electricity"/>
+     <rewrite from="elec_refined liquids (steam/CT)" to="electricity"/>
+     <rewrite from="elec_refined liquids (CC)" to="electricity"/>
+     <rewrite from="elec_Gen_III" to="electricity"/>
+     <rewrite from="elec_geothermal" to="electricity"/>
+     <rewrite from="elec_refined liquids (CC CCS)" to="electricity"/>
+     <rewrite from="elec_biomass (conv)" to="electricity"/>
+     <rewrite from="elec_gas (steam/CT)" to="electricity"/>
+     <rewrite from="elec_biomass (conv CCS)" to="electricity"/>
+     <rewrite from="elec_biomass (IGCC)" to="electricity"/>
+     <rewrite from="elec_coal (IGCC)" to="electricity"/>
+     <rewrite from="elec_CSP_storage" to="electricity"/>
+    </level>
+    <level name="subsector">
+     <rewrite from="biomass (IGCC CCS)" to="biomass"/>
+     <rewrite from="biomass (IGCC)" to="biomass"/>
+     <rewrite from="coal (IGCC CCS)" to="coal"/>
+     <rewrite from="CSP" to="solar"/>
+     <rewrite from="Gen_III" to="nuclear"/>
+     <rewrite from="refined liquids (CC CCS)" to="refined liquids"/>
+     <rewrite from="gas (CC)" to="gas"/>
+     <rewrite from="Gen_II_LWR" to="nuclear"/>
+     <rewrite from="coal (conv pul CCS)" to="coal"/>
+     <rewrite from="biomass (conv)" to="biomass"/>
+     <rewrite from="gas (steam/CT)" to="gas"/>
+     <rewrite from="coal (conv pul)" to="coal"/>
+     <rewrite from="gas (CC CCS)" to="gas"/>
+     <rewrite from="refined liquids (CC)" to="refined liquids"/>
+     <rewrite from="coal (IGCC)" to="coal"/>
+     <rewrite from="biomass (conv CCS)" to="biomass"/>
+     <rewrite from="CSP_storage" to="solar"/>
+     <rewrite from="refined liquids (steam/CT)" to="refined liquids"/>
+    </level>
+   </labelRewriteList>
+   <showAttribute attribute-name="year" level="technology"/>
+  </supplyDemandQuery>
+ </aQuery>
+ <aQuery>
+  <region name="HI"/>
+  <region name="DE"/>
+  <region name="TX"/>
+  <region name="MA"/>
+  <region name="MD"/>
+  <region name="ME"/>
+  <region name="IA"/>
+  <region name="ID"/>
+  <region name="MI"/>
+  <region name="UT"/>
+  <region name="MN"/>
+  <region name="MO"/>
+  <region name="IL"/>
+  <region name="IN"/>
+  <region name="MS"/>
+  <region name="MT"/>
+  <region name="AK"/>
+  <region name="VA"/>
+  <region name="AL"/>
+  <region name="AR"/>
+  <region name="NC"/>
+  <region name="ND"/>
+  <region name="RI"/>
+  <region name="NE"/>
+  <region name="AZ"/>
+  <region name="NH"/>
+  <region name="NJ"/>
+  <region name="VT"/>
+  <region name="NM"/>
+  <region name="FL"/>
+  <region name="NV"/>
+  <region name="WA"/>
+  <region name="NY"/>
+  <region name="SC"/>
+  <region name="SD"/>
+  <region name="WI"/>
+  <region name="OH"/>
+  <region name="GA"/>
+  <region name="OK"/>
+  <region name="CA"/>
+  <region name="WV"/>
+  <region name="WY"/>
+  <region name="OR"/>
+  <region name="KS"/>
+  <region name="CO"/>
+  <region name="KY"/>
+  <region name="CT"/>
+  <region name="PA"/>
+  <region name="LA"/>
+  <region name="TN"/>
+  <region name="DC"/>
+  <supplyDemandQuery title="elec gen by gen tech USA">
+   <axis1 name="technology">technology</axis1>
+   <axis2 name="Year">physical-output[@vintage]</axis2>
+   <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and (@name='electricity' or 
+                @name='base load generation' or @name='intermediate generation' or @name='subpeak generation' or @name='peak generation' or 
+                @name='elect_td_bld' or @name='industrial energy use')]//
+                *[@type='subsector']//*[@type='technology' and not (@name='electricity' or @name='elect_td_bld')]/
+                *[@type='output' (:collapse:) and (@name='electricity' or @name='base load generation' or @name='intermediate generation' or 
+                @name='subpeak generation' or @name='peak generation' or @name='elect_td_bld')]/
+                physical-output/node()</xPath>
+   <comments/>
+  </supplyDemandQuery>
+ </aQuery>
+ <aQuery>
+  <region name="HI"/>
+  <region name="DE"/>
+  <region name="TX"/>
+  <region name="MA"/>
+  <region name="MD"/>
+  <region name="ME"/>
+  <region name="IA"/>
+  <region name="ID"/>
+  <region name="MI"/>
+  <region name="UT"/>
+  <region name="MN"/>
+  <region name="MO"/>
+  <region name="IL"/>
+  <region name="IN"/>
+  <region name="MS"/>
+  <region name="MT"/>
+  <region name="AK"/>
+  <region name="VA"/>
+  <region name="AL"/>
+  <region name="AR"/>
+  <region name="NC"/>
+  <region name="ND"/>
+  <region name="RI"/>
+  <region name="NE"/>
+  <region name="AZ"/>
+  <region name="NH"/>
+  <region name="NJ"/>
+  <region name="VT"/>
+  <region name="NM"/>
+  <region name="FL"/>
+  <region name="NV"/>
+  <region name="WA"/>
+  <region name="NY"/>
+  <region name="SC"/>
+  <region name="SD"/>
+  <region name="WI"/>
+  <region name="OH"/>
+  <region name="GA"/>
+  <region name="OK"/>
+  <region name="CA"/>
+  <region name="WV"/>
+  <region name="WY"/>
+  <region name="OR"/>
+  <region name="KS"/>
+  <region name="CO"/>
+  <region name="KY"/>
+  <region name="CT"/>
+  <region name="PA"/>
+  <region name="LA"/>
+  <region name="TN"/>
+  <region name="DC"/>
+  <supplyDemandQuery title="elec gen by gen tech cogen USA">
+   <axis1 name="technology">technology</axis1>
+   <axis2 name="Year">physical-output[@vintage]</axis2>
+   <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and (@name='electricity' or 
+                @name='base load generation' or @name='intermediate generation' or @name='subpeak generation' or @name='peak generation' or 
+                @name='elect_td_bld' or @name='industrial energy use')]/
+                *[@type='subsector']/*[@type='technology' and not (@name='electricity' or @name='elect_td_bld')]/
+                *[@type='output' (:collapse:) and (@name='electricity' or @name='base load generation' or @name='intermediate generation' or 
+                @name='subpeak generation' or @name='peak generation' or @name='elect_td_bld')]/
+                physical-output/node()</xPath>
+   <comments/>
+  </supplyDemandQuery>
+ </aQuery>
+ <aQuery>
+  <all-regions/>
+  <supplyDemandQuery title="elec gen by gen tech and cooling tech">
+   <axis1 name="technology">technology</axis1>
+   <axis2 name="Year">physical-output[@vintage]</axis2>
+   <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and (@name='electricity' or @name='elect_td_bld' or
+                  contains(@name,'elec_')) and not(contains(@name, 'water_td'))]/
+                  *[@type='subsector' and not (@name='elect_td_bld')]/
+                  *[@type='technology' and not(@name='biomass (conv)' or @name='biomass (conv CCS)' or @name='biomass (IGCC)' or @name='biomass (IGCC CCS)'
+                                   or @name='coal (conv pul)' or @name='coal (conv pul CCS)' or @name='coal (IGCC)' or @name='coal (IGCC CCS)'
+                                   or @name='gas (steam/CT)' or @name='gas (CC)' or @name='gas (CC CCS)'
+                                   or @name='refined liquids (steam/CT)' or @name='refined liquids (CC)' or @name='refined liquids (CC CCS)'
+                                   or @name='geothermal' or @name='Gen_II_LWR' or @name='Gen_III'
+                                   or @name='CSP' or @name='CSP_storage')]/
+                  *[@type='output']/physical-output/node()</xPath>
+   <comments/>
+   <labelRewriteList append-values="false">
+    <level name="sector">
+     <rewrite from="elec_gas (CC CCS)" to="electricity"/>
+     <rewrite from="elec_coal (conv pul)" to="electricity"/>
+     <rewrite from="elec_biomass (IGCC CCS)" to="electricity"/>
+     <rewrite from="elec_coal (IGCC CCS)" to="electricity"/>
+     <rewrite from="elec_gas (CC)" to="electricity"/>
+     <rewrite from="elec_coal (conv pul CCS)" to="electricity"/>
+     <rewrite from="elec_CSP" to="electricity"/>
+     <rewrite from="elec_Gen_II_LWR" to="electricity"/>
+     <rewrite from="elec_refined liquids (steam/CT)" to="electricity"/>
+     <rewrite from="elec_refined liquids (CC)" to="electricity"/>
+     <rewrite from="elec_Gen_III" to="electricity"/>
+     <rewrite from="elec_geothermal" to="electricity"/>
+     <rewrite from="elec_refined liquids (CC CCS)" to="electricity"/>
+     <rewrite from="elec_biomass (conv)" to="electricity"/>
+     <rewrite from="elec_gas (steam/CT)" to="electricity"/>
+     <rewrite from="elec_biomass (conv CCS)" to="electricity"/>
+     <rewrite from="elec_biomass (IGCC)" to="electricity"/>
+     <rewrite from="elec_coal (IGCC)" to="electricity"/>
+     <rewrite from="elec_CSP_storage" to="electricity"/>
+    </level>
+    <level name="subsector">
+     <rewrite from="biomass (IGCC CCS)" to="biomass"/>
+     <rewrite from="biomass (IGCC)" to="biomass"/>
+     <rewrite from="coal (IGCC CCS)" to="coal"/>
+     <rewrite from="CSP" to="solar"/>
+     <rewrite from="Gen_III" to="nuclear"/>
+     <rewrite from="refined liquids (CC CCS)" to="refined liquids"/>
+     <rewrite from="gas (CC)" to="gas"/>
+     <rewrite from="Gen_II_LWR" to="nuclear"/>
+     <rewrite from="coal (conv pul CCS)" to="coal"/>
+     <rewrite from="biomass (conv)" to="biomass"/>
+     <rewrite from="gas (steam/CT)" to="gas"/>
+     <rewrite from="coal (conv pul)" to="coal"/>
+     <rewrite from="gas (CC CCS)" to="gas"/>
+     <rewrite from="refined liquids (CC)" to="refined liquids"/>
+     <rewrite from="coal (IGCC)" to="coal"/>
+     <rewrite from="biomass (conv CCS)" to="biomass"/>
+     <rewrite from="CSP_storage" to="solar"/>
+     <rewrite from="refined liquids (steam/CT)" to="refined liquids"/>
+    </level>
+   </labelRewriteList>
+  </supplyDemandQuery>
+ </aQuery>
+ <aQuery>
+  <all-regions/>
+  <supplyDemandQuery title="ag production by tech">
+   <axis1 name="technology">technology[@name]</axis1>
+   <axis2 name="Year">physical-output[@vintage]</axis2>
+   <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/
+            output-primary/physical-output/node()</xPath>
+   <comments/>
+  </supplyDemandQuery>
+ </aQuery>
+ <aQuery>
+  <region name="HI"/>
+  <region name="DE"/>
+  <region name="TX"/>
+  <region name="MA"/>
+  <region name="MD"/>
+  <region name="ME"/>
+  <region name="IA"/>
+  <region name="ID"/>
+  <region name="MI"/>
+  <region name="UT"/>
+  <region name="MN"/>
+  <region name="MO"/>
+  <region name="IL"/>
+  <region name="IN"/>
+  <region name="MS"/>
+  <region name="MT"/>
+  <region name="AK"/>
+  <region name="VA"/>
+  <region name="AL"/>
+  <region name="AR"/>
+  <region name="NC"/>
+  <region name="ND"/>
+  <region name="RI"/>
+  <region name="NE"/>
+  <region name="AZ"/>
+  <region name="NH"/>
+  <region name="NJ"/>
+  <region name="VT"/>
+  <region name="NM"/>
+  <region name="FL"/>
+  <region name="NV"/>
+  <region name="WA"/>
+  <region name="NY"/>
+  <region name="SC"/>
+  <region name="SD"/>
+  <region name="WI"/>
+  <region name="OH"/>
+  <region name="GA"/>
+  <region name="OK"/>
+  <region name="CA"/>
+  <region name="WV"/>
+  <region name="WY"/>
+  <region name="OR"/>
+  <region name="KS"/>
+  <region name="CO"/>
+  <region name="KY"/>
+  <region name="CT"/>
+  <region name="PA"/>
+  <region name="LA"/>
+  <region name="TN"/>
+  <region name="DC"/>
+  <region name="USA"/>
+  <region name="USA"/>
+  <region name="Alaska grid"/>
+  <region name="California grid"/>
+  <region name="Central East grid"/>
+  <region name="Central Northeast grid"/>
+  <region name="Central Northwest grid"/>
+  <region name="Central Southwest grid"/>
+  <region name="Florida grid"/>
+  <region name="Hawaii grid"/>
+  <region name="Mid-Atlantic grid"/>
+  <region name="New England grid"/>
+  <region name="New York grid"/>
+  <region name="Northwest grid"/>
+  <region name="Southeast grid"/>
+  <region name="Southwest grid"/>
+  <region name="Texas grid"/>
+  <emissionsQueryBuilder title="nonCO2 emissions by sector USA">
+   <axis1 name="GHG">GHG</axis1>
+   <axis2 name="Year">emissions</axis2>
+   <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']//*[@type = 'GHG']/emissions/node()</xPath>
+   <comments/>
+  </emissionsQueryBuilder>
+ </aQuery>
+ <aQuery>
+  <region name="HI"/>
+  <region name="DE"/>
+  <region name="TX"/>
+  <region name="MA"/>
+  <region name="MD"/>
+  <region name="ME"/>
+  <region name="IA"/>
+  <region name="ID"/>
+  <region name="MI"/>
+  <region name="UT"/>
+  <region name="MN"/>
+  <region name="MO"/>
+  <region name="IL"/>
+  <region name="IN"/>
+  <region name="MS"/>
+  <region name="MT"/>
+  <region name="AK"/>
+  <region name="VA"/>
+  <region name="AL"/>
+  <region name="AR"/>
+  <region name="NC"/>
+  <region name="ND"/>
+  <region name="RI"/>
+  <region name="NE"/>
+  <region name="AZ"/>
+  <region name="NH"/>
+  <region name="NJ"/>
+  <region name="VT"/>
+  <region name="NM"/>
+  <region name="FL"/>
+  <region name="NV"/>
+  <region name="WA"/>
+  <region name="NY"/>
+  <region name="SC"/>
+  <region name="SD"/>
+  <region name="WI"/>
+  <region name="OH"/>
+  <region name="GA"/>
+  <region name="OK"/>
+  <region name="CA"/>
+  <region name="WV"/>
+  <region name="WY"/>
+  <region name="OR"/>
+  <region name="KS"/>
+  <region name="CO"/>
+  <region name="KY"/>
+  <region name="CT"/>
+  <region name="PA"/>
+  <region name="LA"/>
+  <region name="TN"/>
+  <region name="DC"/>
+  <region name="USA"/>
+  <region name="USA"/>
+  <region name="Alaska grid"/>
+  <region name="California grid"/>
+  <region name="Central East grid"/>
+  <region name="Central Northeast grid"/>
+  <region name="Central Northwest grid"/>
+  <region name="Central Southwest grid"/>
+  <region name="Florida grid"/>
+  <region name="Hawaii grid"/>
+  <region name="Mid-Atlantic grid"/>
+  <region name="New England grid"/>
+  <region name="New York grid"/>
+  <region name="Northwest grid"/>
+  <region name="Southeast grid"/>
+  <region name="Southwest grid"/>
+  <region name="Texas grid"/>
+  <emissionsQueryBuilder title="nonCO2 emissions by sector USA">
+   <axis1 name="GHG">GHG</axis1>
+   <axis2 name="Year">emissions</axis2>
+   <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']//*[@type = 'GHG']/emissions/node()</xPath>
+   <comments/>
+  </emissionsQueryBuilder>
+ </aQuery>
+ <aQuery>
+  <region name="HI"/>
+  <region name="DE"/>
+  <region name="TX"/>
+  <region name="MA"/>
+  <region name="MD"/>
+  <region name="ME"/>
+  <region name="IA"/>
+  <region name="ID"/>
+  <region name="MI"/>
+  <region name="UT"/>
+  <region name="MN"/>
+  <region name="MO"/>
+  <region name="IL"/>
+  <region name="IN"/>
+  <region name="MS"/>
+  <region name="MT"/>
+  <region name="AK"/>
+  <region name="VA"/>
+  <region name="AL"/>
+  <region name="AR"/>
+  <region name="NC"/>
+  <region name="ND"/>
+  <region name="RI"/>
+  <region name="NE"/>
+  <region name="AZ"/>
+  <region name="NH"/>
+  <region name="NJ"/>
+  <region name="VT"/>
+  <region name="NM"/>
+  <region name="FL"/>
+  <region name="NV"/>
+  <region name="WA"/>
+  <region name="NY"/>
+  <region name="SC"/>
+  <region name="SD"/>
+  <region name="WI"/>
+  <region name="OH"/>
+  <region name="GA"/>
+  <region name="OK"/>
+  <region name="CA"/>
+  <region name="WV"/>
+  <region name="WY"/>
+  <region name="OR"/>
+  <region name="KS"/>
+  <region name="CO"/>
+  <region name="KY"/>
+  <region name="CT"/>
+  <region name="PA"/>
+  <region name="LA"/>
+  <region name="TN"/>
+  <region name="DC"/>
+  <region name="USA"/>
+  <region name="USA"/>
+  <region name="Alaska grid"/>
+  <region name="California grid"/>
+  <region name="Central East grid"/>
+  <region name="Central Northeast grid"/>
+  <region name="Central Northwest grid"/>
+  <region name="Central Southwest grid"/>
+  <region name="Florida grid"/>
+  <region name="Hawaii grid"/>
+  <region name="Mid-Atlantic grid"/>
+  <region name="New England grid"/>
+  <region name="New York grid"/>
+  <region name="Northwest grid"/>
+  <region name="Southeast grid"/>
+  <region name="Southwest grid"/>
+  <region name="Texas grid"/>
+  <emissionsQueryBuilder title="nonCO2 emissions by sector USA">
+   <axis1 name="GHG">GHG</axis1>
+   <axis2 name="Year">emissions</axis2>
+   <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']//*[@type = 'GHG']/emissions/node()</xPath>
+   <comments/>
+  </emissionsQueryBuilder>
+ </aQuery>
+ <aQuery>
+  <all-regions/>
+  <gdpQueryBuilder title="GDP MER by region">
+   <axis1 name="region">region</axis1>
+   <axis2 name="Year">gdp-mer</axis2>
+   <xPath buildList="true" dataName="gdp-mer" group="false" sumAll="false">GDP/gdp-mer/text()</xPath>
+   <comments/>
+  </gdpQueryBuilder>
+ </aQuery>
+ <aQuery>
+  <all-regions/>
+  <demographicsQuery title="Population by region">
+   <axis1 name="region">region</axis1>
+   <axis2 name="Year">populationMiniCAM</axis2>
+   <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+   <comments/>
+  </demographicsQuery>
+ </aQuery>
+ <aQuery>
+  <all-regions/>
+  <supplyDemandQuery title="total final energy by aggregate sector">
+   <axis1 name="sector">sector</axis1>
+   <axis2 name="Year">demand-physical[@vintage]</axis2>
+   <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and ((@name='building' or @name='industry' or @name='transportation') or
+            (exists(child::keyword/@final-energy)))]//*[@type='input' (:collapse:) and
+            not(@name='limestone' or @name='process heat cement' or @name='industrial energy use' or
+                @name='industrial feedstocks' or @name='renewable' or contains(@name, 'trn') or @name='oil-credits')]/
+            demand-physical[@unit='EJ']/node()</xPath>
+   <comments/>
+   <labelRewriteList append-values="false">
+    <level name="sector">
+     <rewrite from="trn_pass_road_bus" to="transportation"/>
+     <rewrite from="trn_pass_road_LDV" to="transportation"/>
+     <rewrite from="trn_freight" to="transportation"/>
+     <rewrite from="trn_pass_road_LDV_2W" to="transportation"/>
+     <rewrite from="N fertilizer" to="industry"/>
+     <rewrite from="resid heating" to="building"/>
+     <rewrite from="industrial feedstocks" to="industry"/>
+     <rewrite from="comm heating" to="building"/>
+     <rewrite from="trn_aviation_intl" to="transportation"/>
+     <rewrite from="industrial energy use" to="industry"/>
+     <rewrite from="comm cooling" to="building"/>
+     <rewrite from="trn_shipping_intl" to="transportation"/>
+     <rewrite from="trn_pass_road_LDV_4W" to="transportation"/>
+     <rewrite from="trn_freight_road" to="transportation"/>
+     <rewrite from="comm others" to="building"/>
+     <rewrite from="trn_pass" to="transportation"/>
+     <rewrite from="process heat cement" to="industry"/>
+     <rewrite from="resid cooling" to="building"/>
+     <rewrite from="cement" to="industry"/>
+     <rewrite from="resid others" to="building"/>
+     <rewrite from="trn_pass_road" to="transportation"/>
+    </level>
+   </labelRewriteList>
+  </supplyDemandQuery>
+ </aQuery>
+ <aQuery>
+  <all-regions/>
+  <query title="aggregated land allocation">
+   <axis1 name="LandLeaf">LandLeaf[@crop]</axis1>
+   <axis2 name="Year">land-allocation[@year]</axis2>
+   <xPath buildList="true" dataName="LandLeaf" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//land-allocation/text()</xPath>
+   <comments/>
+   <labelRewriteList append-values="false">
+    <level name="LandLeaf">
+     <rewrite from="Corn" to="crops"/>
+     <rewrite from="FiberCrop" to="crops"/>
+     <rewrite from="FodderGrass" to="crops"/>
+     <rewrite from="FodderHerb" to="crops"/>
+     <rewrite from="Forest" to="forest (managed)"/>
+     <rewrite from="Grassland" to="grass"/>
+     <rewrite from="MiscCrop" to="crops"/>
+     <rewrite from="OilCrop" to="crops"/>
+     <rewrite from="OtherArableLand" to="otherarable"/>
+     <rewrite from="OtherGrain" to="crops"/>
+     <rewrite from="PalmFruit" to="crops"/>
+     <rewrite from="Pasture" to="pasture (grazed)"/>
+     <rewrite from="ProtectedGrassland" to="grass"/>
+     <rewrite from="ProtectedShrubland" to="shrubs"/>
+     <rewrite from="ProtectedUnmanagedForest" to="forest (unmanaged)"/>
+     <rewrite from="ProtectedUnmanagedPasture" to="pasture (other)"/>
+     <rewrite from="Rice" to="crops"/>
+     <rewrite from="RockIceDesert" to="rock and desert"/>
+     <rewrite from="Root_Tuber" to="crops"/>
+     <rewrite from="Shrubland" to="shrubs"/>
+     <rewrite from="SugarCrop" to="crops"/>
+     <rewrite from="Tundra" to="tundra"/>
+     <rewrite from="UnmanagedForest" to="forest (unmanaged)"/>
+     <rewrite from="UnmanagedPasture" to="pasture (other)"/>
+     <rewrite from="UrbanLand" to="urban"/>
+     <rewrite from="Wheat" to="crops"/>
+     <rewrite from="biomass_grass" to="biomass"/>
+     <rewrite from="biomass_tree" to="biomass"/>
+    </level>
+   </labelRewriteList>
+  </query>
+ </aQuery>
+ <aQuery>
+  <all-regions/>
+  <supplyDemandQuery title="CO2 emissions by sector (no bio)">
+   <axis1 name="sector">sector[@name]</axis1>
+   <axis2 name="Year">emissions[@year]</axis2>
+   <xPath buildList="true" dataName="input" group="false" sumAll="false">
+    <![CDATA[
+    declare function local:append-heirarchy($parent as node(), $append as node()*) as node() {
+            let $scn := $parent/ancestor::scenario,
+            $rgn := $parent (: /ancestor::region :)
+            return
+            document { element scenario {
+            $scn/@*,
+            element region {
+            $rgn/@*,
+            $append
+            }
+            }
+            }
+            (: I can get by with just the scenario and region
+            let $new_node := element {local-name($parent)} {$parent/@*, $append} 	
+            return
+            if(local-name($parent) != 'scenario')
+            then local:append-heirarchy($parent/parent::*, $new_node)
+            else document { $new_node } :)
+            }; 
+            declare function local:get-carbon-coef($good as xs:string) as xs:decimal {
+            let $carbonCoefs := (
+            <PrimaryFuelCO2Coef name="biomass">0</PrimaryFuelCO2Coef>,
+            <PrimaryFuelCO2Coef name="coal">27.3</PrimaryFuelCO2Coef>,
+            <PrimaryFuelCO2Coef name="crude oil">19.6</PrimaryFuelCO2Coef>,
+            <PrimaryFuelCO2Coef name="delivered biomass">23</PrimaryFuelCO2Coef>,
+            <PrimaryFuelCO2Coef name="delivered coal">27.3</PrimaryFuelCO2Coef>,
+            <PrimaryFuelCO2Coef name="delivered gas">14.2</PrimaryFuelCO2Coef>,
+            <PrimaryFuelCO2Coef name="gas pipeline">14.2</PrimaryFuelCO2Coef>,
+            <PrimaryFuelCO2Coef name="gas processing">14.2</PrimaryFuelCO2Coef>,
+            <PrimaryFuelCO2Coef name="limestone">0.08</PrimaryFuelCO2Coef>,
+            <PrimaryFuelCO2Coef name="natural gas">14.2</PrimaryFuelCO2Coef>,
+            <PrimaryFuelCO2Coef name="refined liquids enduse">19.6</PrimaryFuelCO2Coef>,
+            <PrimaryFuelCO2Coef name="refined liquids industrial">19.6</PrimaryFuelCO2Coef>,
+            <PrimaryFuelCO2Coef name="refining">19.6</PrimaryFuelCO2Coef>,
+            <PrimaryFuelCO2Coef name="regional biomass">23</PrimaryFuelCO2Coef>,
+            <PrimaryFuelCO2Coef name="regional biomassOil">19.6</PrimaryFuelCO2Coef>,
+            <PrimaryFuelCO2Coef name="regional coal">27.3</PrimaryFuelCO2Coef>,
+            <PrimaryFuelCO2Coef name="regional corn for ethanol">19.6</PrimaryFuelCO2Coef>,
+            <PrimaryFuelCO2Coef name="regional natural gas">14.2</PrimaryFuelCO2Coef>,
+            <PrimaryFuelCO2Coef name="regional oil">19.6</PrimaryFuelCO2Coef>,
+            <PrimaryFuelCO2Coef name="regional sugar for ethanol">19.6</PrimaryFuelCO2Coef>,
+            <PrimaryFuelCO2Coef name="traded unconventional oil">19.6</PrimaryFuelCO2Coef>,
+            <PrimaryFuelCO2Coef name="unconventional oil">21.1</PrimaryFuelCO2Coef>,
+            <PrimaryFuelCO2Coef name="unconventional oil production">19.6</PrimaryFuelCO2Coef>,
+            <PrimaryFuelCO2Coef name="wholesale gas">14.2</PrimaryFuelCO2Coef>),
+            $currCoef := $carbonCoefs[@name=$good]/text()
+            return if(exists($currCoef)) then $currCoef else 0.0
+            };
+            
+            
+            declare function local:is-carbonatious-fuel($good as xs:string) as xs:boolean {
+            not(local:get-carbon-coef($good) = 0.0)
+            };
+            declare function local:generate-sector-output-coefs($inputNameQueue as xs:string*, $currTree as node(), $coefs as node()*, $is_usa as xs:boolean) as node()* {
+            if(empty($inputNameQueue)) then $coefs
+            else if( exists($coefs[@name = $inputNameQueue[1]]) or exists(index-of(('traded unconventional oil'),
+            $inputNameQueue[1])) or not($currTree/*[@type='sector' and @name=$inputNameQueue[1]]) or not(local:is-carbonatious-fuel($inputNameQueue[1])))
+            then 
+            local:generate-sector-output-coefs(remove($inputNameQueue, 1), $currTree, $coefs, $is_usa)
+            else
+            let $inputName := $inputNameQueue[1],
+            $newInputNameQueue := remove($inputNameQueue, 1),
+            $useInputs := $currTree//*[@type='input' and @name=$inputName],
+            $useSectors := distinct-values($useInputs/ancestor::*[@type='sector']/@name),
+            $totalInputSum := for $vintage in distinct-values($useInputs/demand-physical/@vintage)
+            return element input {
+            attribute vintage { $vintage },
+            text {
+            sum($useInputs/demand-physical[@vintage=$vintage])
+            }
+            },
+            $new_coefs := if(empty($useSectors)) then
+            $coefs
+            else
+            $coefs | element sector {
+            attribute name { $inputName },
+            for $output in $useSectors
+            return element output {
+            attribute name { $output },
+            for $inputSum in $totalInputSum
+            let $currSectorInputs := $useInputs[ancestor::*[@type='sector' and @name=$output]],
+            $outputSum := sum($currSectorInputs/demand-physical[@vintage=$inputSum/@vintage]),
+            $carbonIn := sum($currSectorInputs/parent::*//carbon-content[@vintage=$inputSum/@vintage]),
+            $carbonOut := sum($currSectorInputs/parent::*/output-primary/physical-output[@vintage=$inputSum/@vintage]) *
+            local:get-carbon-coef($output)
+            return (element share {
+            attribute vintage { $inputSum/@vintage },
+            text { $outputSum div $inputSum }
+            }, element carbon_ratio {
+            attribute vintage { $inputSum/@vintage },
+            text{ if($carbonIn > 0) then $carbonOut div $carbonIn else 0 }
+            })
+            }
+            }
+            return 
+            local:generate-sector-output-coefs(distinct-values(($newInputNameQueue, $useSectors)), $currTree, $new_coefs, $is_usa)
+            };
+            declare function local:apply-coefs($outputName as xs:string, $emissions as node()*, $coefs as node()*) as node()* {
+            if(exists($coefs[@name=$outputName]) and abs(sum($emissions)) > 0.001) then
+            for $output in $coefs[@name=$outputName]/output
+            let $emiss_go := for $year in distinct-values($emissions/@year)
+            let $emissThisVintage := $emissions[@year=$year],
+            $firstEmiss := $emissThisVintage[1],
+            $emissSum := sum($emissThisVintage),
+            $shareThisVintage := $output/share[@vintage=$year],
+            $carbonRatioThisVintage := $output/carbon_ratio[@vintage=$year],
+            $coefThisVintage := $shareThisVintage * $carbonRatioThisVintage
+            where $coefThisVintage > 0
+            return element { local-name($firstEmiss) } {
+            $firstEmiss/@*,
+            text{ $emissSum * $coefThisVintage }
+            },
+            $emiss_stay := for $year in distinct-values($emissions/@year)
+            let $emissThisVintage := $emissions[@year=$year],
+            $firstEmiss := $emissThisVintage[1],
+            $emissSum := sum($emissThisVintage),
+            $shareThisVintage := $output/share[@vintage=$year],
+            $carbonRatioThisVintage := 1.0 - $output/carbon_ratio[@vintage=$year],
+            $coefThisVintage := $shareThisVintage * $carbonRatioThisVintage 
+            where $coefThisVintage > 0
+            return element { local-name($firstEmiss) } {
+            $firstEmiss/@*,
+            text{ $emissSum * $coefThisVintage }
+            }
+            return local:apply-coefs($output/@name, $emiss_go, $coefs) |
+            element sector {
+            attribute name { $output/@name},
+            attribute type { 'sector' },
+            $emiss_stay
+            }
+            else if( abs(sum($emissions)) > 0.001) then
+            element sector {
+            attribute name { $outputName },
+            attribute type { 'sector' },
+            $emissions
+            }
+            else
+            (: These are the residuals from chasing simulenaties, I've left this here
+            for debuging purposes :)
+            element sector {
+            attribute name { $outputName },
+            attribute type { 'sector' }(:,
+            $emissions:)
+            }
+            };
+            declare function local:run-emiss-by-enduse($scenarios as xs:string*, $regions as xs:string*, $collection as xs:string) as node()* { 	
+            (:unordered { :) 	
+            let $regionsG := if(not($regions[1] = 'Global'))
+            then $regions
+            else distinct-values(collection($collection)/scenario/world/*[@type='region']/@name)
+            return
+            for $scenario in $scenarios, 	    
+            $region in $regionsG 	
+            let $scenario_split := tokenize($scenario, ' '), 	    
+            $currTree := collection($collection)/scenario[@name = $scenario_split[1] and @date = $scenario_split[2]]/world/*[@type='region' and @name=$region],
+            $sector_emiss := $currTree/*[@type='sector' and not(@name='regional biomass' or @name='regional biomassOil' or @name='regional corn for ethanol' or @name='regional sugar for ethanol' or @name='regional sugarbeet for ethanol')]//CO2[@type='GHG' (:collapse:) and @name='CO2']/emissions/text(),
+            $currEmissSectors := $currTree/*[@type='sector' and (@name='regional biomass' or @name='regional biomassOil' or @name='regional corn for ethanol' or @name='regional sugar for ethanol' or @name='regional sugarbeet for ethanol')],
+            $coefs := local:generate-sector-output-coefs(distinct-values($currEmissSectors/@name), $currTree, (), false()),
+            $downstream_emiss := for $sectorName in distinct-values($currEmissSectors/@name)
+            return local:append-heirarchy($currTree, local:apply-coefs($sectorName, $currEmissSectors[@name=$sectorName]//CO2[@name='CO2']/emissions, $coefs))//text() 
+            return ($sector_emiss, $downstream_emiss )
+            (:  } :)
+            };
+            local:run-emiss-by-enduse((:scenarios:), (:regions:), (:collection:))    ]]>
+   </xPath>
+   <comments/>
+   <labelRewriteList append-values="false">
+    <level name="sector">
+     <rewrite from="elec_coal (conv pul)" to="electricity"/>
+     <rewrite from="elec_gas (CC)" to="electricity"/>
+     <rewrite from="elec_CSP" to="electricity"/>
+     <rewrite from="elec_Gen_II_LWR" to="electricity"/>
+     <rewrite from="elec_refined liquids (CC)" to="electricity"/>
+     <rewrite from="elec_refined liquids (steam/CT)" to="electricity"/>
+     <rewrite from="elec_Gen_III" to="electricity"/>
+     <rewrite from="elec_geothermal" to="electricity"/>
+     <rewrite from="elec_biomass (conv)" to="electricity"/>
+     <rewrite from="elec_gas (steam/CT)" to="electricity"/>
+     <rewrite from="elec_biomass (IGCC)" to="electricity"/>
+     <rewrite from="elec_coal (IGCC)" to="electricity"/>
+     <rewrite from="elec_CSP_storage" to="electricity"/>
+    </level>
+   </labelRewriteList>
+  </supplyDemandQuery>
+ </aQuery>
+ <aQuery>
+  <all-regions/>
+  <region name="HI"/>
+  <region name="DE"/>
+  <region name="TX"/>
+  <region name="MA"/>
+  <region name="MD"/>
+  <region name="ME"/>
+  <region name="IA"/>
+  <region name="ID"/>
+  <region name="MI"/>
+  <region name="UT"/>
+  <region name="MN"/>
+  <region name="MO"/>
+  <region name="IL"/>
+  <region name="IN"/>
+  <region name="MS"/>
+  <region name="MT"/>
+  <region name="AK"/>
+  <region name="VA"/>
+  <region name="AL"/>
+  <region name="AR"/>
+  <region name="NC"/>
+  <region name="ND"/>
+  <region name="RI"/>
+  <region name="NE"/>
+  <region name="AZ"/>
+  <region name="NH"/>
+  <region name="NJ"/>
+  <region name="VT"/>
+  <region name="NM"/>
+  <region name="FL"/>
+  <region name="NV"/>
+  <region name="WA"/>
+  <region name="NY"/>
+  <region name="SC"/>
+  <region name="SD"/>
+  <region name="WI"/>
+  <region name="OH"/>
+  <region name="GA"/>
+  <region name="OK"/>
+  <region name="CA"/>
+  <region name="WV"/>
+  <region name="WY"/>
+  <region name="OR"/>
+  <region name="KS"/>
+  <region name="CO"/>
+  <region name="KY"/>
+  <region name="CT"/>
+  <region name="PA"/>
+  <region name="LA"/>
+  <region name="TN"/>
+  <region name="DC"/>
+  <region name="USA"/>
+  <region name="Alaska grid"/>
+  <region name="California grid"/>
+  <region name="Central East grid"/>
+  <region name="Central Northeast grid"/>
+  <region name="Central Northwest grid"/>
+  <region name="Central Southwest grid"/>
+  <region name="Florida grid"/>
+  <region name="Hawaii grid"/>
+  <region name="Mid-Atlantic grid"/>
+  <region name="New England grid"/>
+  <region name="New York grid"/>
+  <region name="Northwest grid"/>
+  <region name="Southeast grid"/>
+  <region name="Southwest grid"/>
+  <region name="Texas grid"/>
+  <emissionsQueryBuilder title="nonCO2 emissions by sector USA">
+   <axis1 name="GHG">GHG</axis1>
+   <axis2 name="Year">emissions</axis2>
+   <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']//*[@type = 'GHG']/emissions/node()</xPath>
+   <comments/>
+  </emissionsQueryBuilder>
+ </aQuery>
+ <aQuery>
+  <all-regions/>
+  <region name="HI"/>
+  <region name="DE"/>
+  <region name="TX"/>
+  <region name="MA"/>
+  <region name="MD"/>
+  <region name="ME"/>
+  <region name="IA"/>
+  <region name="ID"/>
+  <region name="MI"/>
+  <region name="UT"/>
+  <region name="MN"/>
+  <region name="MO"/>
+  <region name="IL"/>
+  <region name="IN"/>
+  <region name="MS"/>
+  <region name="MT"/>
+  <region name="AK"/>
+  <region name="VA"/>
+  <region name="AL"/>
+  <region name="AR"/>
+  <region name="NC"/>
+  <region name="ND"/>
+  <region name="RI"/>
+  <region name="NE"/>
+  <region name="AZ"/>
+  <region name="NH"/>
+  <region name="NJ"/>
+  <region name="VT"/>
+  <region name="NM"/>
+  <region name="FL"/>
+  <region name="NV"/>
+  <region name="WA"/>
+  <region name="NY"/>
+  <region name="SC"/>
+  <region name="SD"/>
+  <region name="WI"/>
+  <region name="OH"/>
+  <region name="GA"/>
+  <region name="OK"/>
+  <region name="CA"/>
+  <region name="WV"/>
+  <region name="WY"/>
+  <region name="OR"/>
+  <region name="KS"/>
+  <region name="CO"/>
+  <region name="KY"/>
+  <region name="CT"/>
+  <region name="PA"/>
+  <region name="LA"/>
+  <region name="TN"/>
+  <region name="DC"/>
+  <region name="USA"/>
+  <region name="Alaska grid"/>
+  <region name="California grid"/>
+  <region name="Central East grid"/>
+  <region name="Central Northeast grid"/>
+  <region name="Central Northwest grid"/>
+  <region name="Central Southwest grid"/>
+  <region name="Florida grid"/>
+  <region name="Hawaii grid"/>
+  <region name="Mid-Atlantic grid"/>
+  <region name="New England grid"/>
+  <region name="New York grid"/>
+  <region name="Northwest grid"/>
+  <region name="Southeast grid"/>
+  <region name="Southwest grid"/>
+  <region name="Texas grid"/>
+  <emissionsQueryBuilder title="nonCO2 emissions by sector USA">
+   <axis1 name="GHG">GHG</axis1>
+   <axis2 name="Year">emissions</axis2>
+   <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']//*[@type = 'GHG']/emissions/node()</xPath>
+   <comments/>
+  </emissionsQueryBuilder>
+ </aQuery>
+ <aQuery>
+  <all-regions/>
+  <region name="HI"/>
+  <region name="DE"/>
+  <region name="TX"/>
+  <region name="MA"/>
+  <region name="MD"/>
+  <region name="ME"/>
+  <region name="IA"/>
+  <region name="ID"/>
+  <region name="MI"/>
+  <region name="UT"/>
+  <region name="MN"/>
+  <region name="MO"/>
+  <region name="IL"/>
+  <region name="IN"/>
+  <region name="MS"/>
+  <region name="MT"/>
+  <region name="AK"/>
+  <region name="VA"/>
+  <region name="AL"/>
+  <region name="AR"/>
+  <region name="NC"/>
+  <region name="ND"/>
+  <region name="RI"/>
+  <region name="NE"/>
+  <region name="AZ"/>
+  <region name="NH"/>
+  <region name="NJ"/>
+  <region name="VT"/>
+  <region name="NM"/>
+  <region name="FL"/>
+  <region name="NV"/>
+  <region name="WA"/>
+  <region name="NY"/>
+  <region name="SC"/>
+  <region name="SD"/>
+  <region name="WI"/>
+  <region name="OH"/>
+  <region name="GA"/>
+  <region name="OK"/>
+  <region name="CA"/>
+  <region name="WV"/>
+  <region name="WY"/>
+  <region name="OR"/>
+  <region name="KS"/>
+  <region name="CO"/>
+  <region name="KY"/>
+  <region name="CT"/>
+  <region name="PA"/>
+  <region name="LA"/>
+  <region name="TN"/>
+  <region name="DC"/>
+  <region name="USA"/>
+  <region name="Alaska grid"/>
+  <region name="California grid"/>
+  <region name="Central East grid"/>
+  <region name="Central Northeast grid"/>
+  <region name="Central Northwest grid"/>
+  <region name="Central Southwest grid"/>
+  <region name="Florida grid"/>
+  <region name="Hawaii grid"/>
+  <region name="Mid-Atlantic grid"/>
+  <region name="New England grid"/>
+  <region name="New York grid"/>
+  <region name="Northwest grid"/>
+  <region name="Southeast grid"/>
+  <region name="Southwest grid"/>
+  <region name="Texas grid"/>
+  <emissionsQueryBuilder title="nonCO2 emissions by sector USA">
+   <axis1 name="GHG">GHG</axis1>
+   <axis2 name="Year">emissions</axis2>
+   <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']//*[@type = 'GHG']/emissions/node()</xPath>
+   <comments/>
+  </emissionsQueryBuilder>
+ </aQuery>
+ <aQuery>
+  <all-regions/>
+  <region name="Africa_Eastern"/>
+  <region name="Africa_Northern"/>
+  <region name="Africa_Southern"/>
+  <region name="Africa_Western"/>
+  <region name="Argentina"/>
+  <region name="Australia_NZ"/>
+  <region name="Brazil"/>
+  <region name="Canada"/>
+  <region name="Central America and Caribbean"/>
+  <region name="Central Asia"/>
+  <region name="China"/>
+  <region name="Colombia"/>
+  <region name="EU-12"/>
+  <region name="EU-15"/>
+  <region name="Europe_Eastern"/>
+  <region name="Europe_Non_EU"/>
+  <region name="European Free Trade Association"/>
+  <region name="India"/>
+  <region name="Indonesia"/>
+  <region name="Japan"/>
+  <region name="Mexico"/>
+  <region name="Middle East"/>
+  <region name="Pakistan"/>
+  <region name="Russia"/>
+  <region name="South Africa"/>
+  <region name="South America_Northern"/>
+  <region name="South America_Southern"/>
+  <region name="South Asia"/>
+  <region name="South Korea"/>
+  <region name="Southeast Asia"/>
+  <region name="Taiwan"/>
+  <emissionsQueryBuilder title="nonCO2 emissions by sector USA nonUS">
+   <axis1 name="GHG">GHG</axis1>
+   <axis2 name="Year">emissions</axis2>
+   <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']//*[@type = 'GHG']/emissions/node()</xPath>
+   <comments/>
+  </emissionsQueryBuilder>
+ </aQuery>
+ <aQuery>
+  <all-regions/>
+  <region name="Africa_Eastern"/>
+  <region name="Africa_Northern"/>
+  <region name="Africa_Southern"/>
+  <region name="Africa_Western"/>
+  <region name="Argentina"/>
+  <region name="Australia_NZ"/>
+  <region name="Brazil"/>
+  <region name="Canada"/>
+  <region name="Central America and Caribbean"/>
+  <region name="Central Asia"/>
+  <region name="China"/>
+  <region name="Colombia"/>
+  <region name="EU-12"/>
+  <region name="EU-15"/>
+  <region name="Europe_Eastern"/>
+  <region name="Europe_Non_EU"/>
+  <region name="European Free Trade Association"/>
+  <region name="India"/>
+  <region name="Indonesia"/>
+  <region name="Japan"/>
+  <region name="Mexico"/>
+  <region name="Middle East"/>
+  <region name="Pakistan"/>
+  <region name="Russia"/>
+  <region name="South Africa"/>
+  <region name="South America_Northern"/>
+  <region name="South America_Southern"/>
+  <region name="South Asia"/>
+  <region name="South Korea"/>
+  <region name="Southeast Asia"/>
+  <region name="Taiwan"/>
+  <emissionsQueryBuilder title="nonCO2 emissions by sector USA nonUS">
+   <axis1 name="GHG">GHG</axis1>
+   <axis2 name="Year">emissions</axis2>
+   <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']//*[@type = 'GHG']/emissions/node()</xPath>
+   <comments/>
+  </emissionsQueryBuilder>
+ </aQuery>
+ <aQuery>
+  <all-regions/>
+  <region name="Africa_Eastern"/>
+  <region name="Africa_Northern"/>
+  <region name="Africa_Southern"/>
+  <region name="Africa_Western"/>
+  <region name="Argentina"/>
+  <region name="Australia_NZ"/>
+  <region name="Brazil"/>
+  <region name="Canada"/>
+  <region name="Central America and Caribbean"/>
+  <region name="Central Asia"/>
+  <region name="China"/>
+  <region name="Colombia"/>
+  <region name="EU-12"/>
+  <region name="EU-15"/>
+  <region name="Europe_Eastern"/>
+  <region name="Europe_Non_EU"/>
+  <region name="European Free Trade Association"/>
+  <region name="India"/>
+  <region name="Indonesia"/>
+  <region name="Japan"/>
+  <region name="Mexico"/>
+  <region name="Middle East"/>
+  <region name="Pakistan"/>
+  <region name="Russia"/>
+  <region name="South Africa"/>
+  <region name="South America_Northern"/>
+  <region name="South America_Southern"/>
+  <region name="South Asia"/>
+  <region name="South Korea"/>
+  <region name="Southeast Asia"/>
+  <region name="Taiwan"/>
+  <emissionsQueryBuilder title="nonCO2 emissions by sector USA nonUS">
+   <axis1 name="GHG">GHG</axis1>
+   <axis2 name="Year">emissions</axis2>
+   <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']//*[@type = 'GHG']/emissions/node()</xPath>
+   <comments/>
+  </emissionsQueryBuilder>
+ </aQuery>
+ <aQuery>
+  <all-regions/>
+  <region name="Africa_Eastern"/>
+  <region name="Africa_Northern"/>
+  <region name="Africa_Southern"/>
+  <region name="Africa_Western"/>
+  <region name="Argentina"/>
+  <region name="Australia_NZ"/>
+  <region name="Brazil"/>
+  <region name="Canada"/>
+  <region name="Central America and Caribbean"/>
+  <region name="Central Asia"/>
+  <region name="China"/>
+  <region name="Colombia"/>
+  <region name="EU-12"/>
+  <region name="EU-15"/>
+  <region name="Europe_Eastern"/>
+  <region name="Europe_Non_EU"/>
+  <region name="European Free Trade Association"/>
+  <region name="India"/>
+  <region name="Indonesia"/>
+  <region name="Japan"/>
+  <region name="Mexico"/>
+  <region name="Middle East"/>
+  <region name="Pakistan"/>
+  <region name="Russia"/>
+  <region name="South Africa"/>
+  <region name="South America_Northern"/>
+  <region name="South America_Southern"/>
+  <region name="South Asia"/>
+  <region name="South Korea"/>
+  <region name="Southeast Asia"/>
+  <region name="Taiwan"/>
+  <emissionsQueryBuilder title="nonCO2 emissions by sector USA nonUS">
+   <axis1 name="GHG">GHG</axis1>
+   <axis2 name="Year">emissions</axis2>
+   <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']//*[@type = 'GHG']/emissions/node()</xPath>
+   <comments/>
+  </emissionsQueryBuilder>
+ </aQuery>
+ <aQuery>
+  <all-regions/>
+  <emissionsQueryBuilder title="nonCO2 emissions by sector">
+   <axis1 name="GHG">GHG</axis1>
+   <axis2 name="Year">emissions</axis2>
+   <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']//*[@type = 'GHG']/emissions/node()</xPath>
+   <comments/>
+  </emissionsQueryBuilder>
+ </aQuery>
+ <aQuery>
+  <all-regions/>
+  <emissionsQueryBuilder title="nonCO2 emissions by sector">
+   <axis1 name="GHG">GHG</axis1>
+   <axis2 name="Year">emissions</axis2>
+   <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']//*[@type = 'GHG']/emissions/node()</xPath>
+   <comments/>
+  </emissionsQueryBuilder>
+ </aQuery>
+ <aQuery>
+  <all-regions/>
+  <emissionsQueryBuilder title="CO2 emissions by sector">
+   <axis1 name="sector">sector</axis1>
+   <axis2 name="Year">emissions</axis2>
+   <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+   <comments/>
+  </emissionsQueryBuilder>
+ </aQuery>
+ <aQuery>
+   <region name = "AK"/>
+   <region name = "AL"/>
+   <region name = "AR"/>
+   <region name = "AZ"/>
+   <region name = "CA"/>
+   <region name = "CO"/>
+   <region name = "CT"/>
+   <region name = "DC"/>
+   <region name = "DE"/>
+   <region name = "FL"/>
+   <region name = "GA"/>
+   <region name = "HI"/>
+   <region name = "IA"/>
+   <region name = "ID"/>
+   <region name = "IL"/>
+   <region name = "IN"/>
+   <region name = "KS"/>
+   <region name = "KY"/>
+   <region name = "LA"/>
+   <region name = "MA"/>
+   <region name = "MD"/>
+   <region name = "ME"/>
+   <region name = "MI"/>
+   <region name = "MN"/>
+   <region name = "MO"/>
+   <region name = "MS"/>
+   <region name = "MT"/>
+   <region name = "NC"/>
+   <region name = "ND"/>
+   <region name = "NE"/>
+   <region name = "NH"/>
+   <region name = "NJ"/>
+   <region name = "NM"/>
+   <region name = "NV"/>
+   <region name = "NY"/>
+   <region name = "OH"/>
+   <region name = "OK"/>
+   <region name = "OR"/>
+   <region name = "PA"/>
+   <region name = "RI"/>
+   <region name = "SC"/>
+   <region name = "SD"/>
+   <region name = "TN"/>
+   <region name = "TX"/>
+   <region name = "UT"/>
+   <region name = "VA"/>
+   <region name = "VT"/>
+   <region name = "WA"/>
+   <region name = "WI"/>
+   <region name = "WV"/>
+   <region name = "WY"/>
+   <supplyDemandQuery title="elec gen by gen tech and cooling tech (incl cogen)">
+        <axis1 name="technology">technology</axis1>
+        <axis2 name="Year">physical-output[@vintage]</axis2>
+        <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and (@name='electricity' or 
+            @name='base load generation' or @name='intermediate generation' or @name='subpeak generation' or @name='peak generation' or 
+            @name='industrial energy use')]//
+            *[@type='subsector']//*[@type='technology' and not (@name='electricity' or @name='elect_td_bld')]/
+            *[@type='output' (:collapse:) and (@name='electricity' or @name='base load generation' or @name='intermediate generation' or 
+            @name='subpeak generation' or @name='peak generation' or @name='elect_td_bld')]/
+            physical-output/node()</xPath>
+        <comments/>
+        <showAttribute attribute-name="year" level="technology"/>
+    </supplyDemandQuery>
+  </aQuery>
+  <aQuery>
+   <region name = "USA"/>
+   <region name = "AK"/>
+   <region name = "AL"/>
+   <region name = "AR"/>
+   <region name = "AZ"/>
+   <region name = "CA"/>
+   <region name = "CO"/>
+   <region name = "CT"/>
+   <region name = "DC"/>
+   <region name = "DE"/>
+   <region name = "FL"/>
+   <region name = "GA"/>
+   <region name = "HI"/>
+   <region name = "IA"/>
+   <region name = "ID"/>
+   <region name = "IL"/>
+   <region name = "IN"/>
+   <region name = "KS"/>
+   <region name = "KY"/>
+   <region name = "LA"/>
+   <region name = "MA"/>
+   <region name = "MD"/>
+   <region name = "ME"/>
+   <region name = "MI"/>
+   <region name = "MN"/>
+   <region name = "MO"/>
+   <region name = "MS"/>
+   <region name = "MT"/>
+   <region name = "NC"/>
+   <region name = "ND"/>
+   <region name = "NE"/>
+   <region name = "NH"/>
+   <region name = "NJ"/>
+   <region name = "NM"/>
+   <region name = "NV"/>
+   <region name = "NY"/>
+   <region name = "OH"/>
+   <region name = "OK"/>
+   <region name = "OR"/>
+   <region name = "PA"/>
+   <region name = "RI"/>
+   <region name = "SC"/>
+   <region name = "SD"/>
+   <region name = "TN"/>
+   <region name = "TX"/>
+   <region name = "UT"/>
+   <region name = "VA"/>
+   <region name = "VT"/>
+   <region name = "WA"/>
+   <region name = "WI"/>
+   <region name = "WV"/>
+   <region name = "WY"/>
+    <supplyDemandQuery title="elec coeff">
+        <axis1 name="sector">technology</axis1>
+        <axis2 name="Year">technology[@year]</axis2>
+        <xPath buildList="true" dataName="output" group="false" sumAll="false">
+      *[@type='sector' and (@name='base load generation' or @name='intermediate generation' or @name='subpeak generation' or @name='peak generation' or @name='electricity')]//IO-coefficient/node()
+            </xPath>
+        <comments/>
+    </supplyDemandQuery>
+  </aQuery>
+  <aQuery>
+   <region name = "USA"/>
+   <region name = "California grid"/>
+   <region name = "Texas grid"/>
+   <region name = "Southwest grid"/>
+   <region name = "Central East grid"/>
+   <region name = "Central Northeast grid"/>
+   <region name = "Central Southwest grid"/>
+   <region name = "Florida grid"/>
+   <region name = "Mid-Atlantic grid"/>
+   <region name = "Northwest grid"/>
+   <region name = "Southeast grid"/>
+   <region name = "Central Northwest grid"/>
+   <region name = "New York grid"/>
+   <region name = "New England grid"/>
+   <region name = "Alaska grid"/>
+   <region name = "Hawaii grid"/>
+     <supplyDemandQuery title="prices by sector">
+      <axis1 name="sector">sector</axis1>
+      <axis2 name="Year">cost</axis2>
+      <xPath buildList="true" dataName="Price" group="false" sumAll="false">*[@type = 'sector']/cost/text()</xPath>
+      <comments/>
+    </supplyDemandQuery>
+  </aQuery>
+  <aQuery>
+   <region name = "USA"/>
+   <region name = "AK"/>
+   <region name = "AL"/>
+   <region name = "AR"/>
+   <region name = "AZ"/>
+   <region name = "CA"/>
+   <region name = "CO"/>
+   <region name = "CT"/>
+   <region name = "DC"/>
+   <region name = "DE"/>
+   <region name = "FL"/>
+   <region name = "GA"/>
+   <region name = "HI"/>
+   <region name = "IA"/>
+   <region name = "ID"/>
+   <region name = "IL"/>
+   <region name = "IN"/>
+   <region name = "KS"/>
+   <region name = "KY"/>
+   <region name = "LA"/>
+   <region name = "MA"/>
+   <region name = "MD"/>
+   <region name = "ME"/>
+   <region name = "MI"/>
+   <region name = "MN"/>
+   <region name = "MO"/>
+   <region name = "MS"/>
+   <region name = "MT"/>
+   <region name = "NC"/>
+   <region name = "ND"/>
+   <region name = "NE"/>
+   <region name = "NH"/>
+   <region name = "NJ"/>
+   <region name = "NM"/>
+   <region name = "NV"/>
+   <region name = "NY"/>
+   <region name = "OH"/>
+   <region name = "OK"/>
+   <region name = "OR"/>
+   <region name = "PA"/>
+   <region name = "RI"/>
+   <region name = "SC"/>
+   <region name = "SD"/>
+   <region name = "TN"/>
+   <region name = "TX"/>
+   <region name = "UT"/>
+   <region name = "VA"/>
+   <region name = "VT"/>
+   <region name = "WA"/>
+   <region name = "WI"/>
+   <region name = "WV"/>
+   <region name = "WY"/>
+   <region name = "California grid"/>
+   <region name = "Texas grid"/>
+   <region name = "Southwest grid"/>
+   <region name = "Central East grid"/>
+   <region name = "Central Northeast grid"/>
+   <region name = "Central Southwest grid"/>
+   <region name = "Florida grid"/>
+   <region name = "Mid-Atlantic grid"/>
+   <region name = "Northwest grid"/>
+   <region name = "Southeast grid"/>
+   <region name = "Central Northwest grid"/>
+   <region name = "New York grid"/>
+   <region name = "New England grid"/>
+   <region name = "Alaska grid"/>
+   <region name = "Hawaii grid"/>
+      <supplyDemandQuery title="elec operating costs by tech and vintage">
+        <axis1 name="technology">technology</axis1>
+        <axis2 name="Year">operating-cost[@vintage]</axis2>
+        <xPath buildList="true" dataName="operating-cost" group="false" sumAll="false">
+          *[@type='sector' and @name='electricity']/
+          *[@type='subsector']/
+          *[@type='technology']/
+          operating-cost/node()
+        </xPath>
+          <comments>variable costs only</comments>
+          <showAttribute attribute-name="year" level="technology"/>
+      </supplyDemandQuery>
+   </aQuery>
+  <aQuery>
+       <region name = "USA"/>
+   <region name = "AK"/>
+   <region name = "AL"/>
+   <region name = "AR"/>
+   <region name = "AZ"/>
+   <region name = "CA"/>
+   <region name = "CO"/>
+   <region name = "CT"/>
+   <region name = "DC"/>
+   <region name = "DE"/>
+   <region name = "FL"/>
+   <region name = "GA"/>
+   <region name = "HI"/>
+   <region name = "IA"/>
+   <region name = "ID"/>
+   <region name = "IL"/>
+   <region name = "IN"/>
+   <region name = "KS"/>
+   <region name = "KY"/>
+   <region name = "LA"/>
+   <region name = "MA"/>
+   <region name = "MD"/>
+   <region name = "ME"/>
+   <region name = "MI"/>
+   <region name = "MN"/>
+   <region name = "MO"/>
+   <region name = "MS"/>
+   <region name = "MT"/>
+   <region name = "NC"/>
+   <region name = "ND"/>
+   <region name = "NE"/>
+   <region name = "NH"/>
+   <region name = "NJ"/>
+   <region name = "NM"/>
+   <region name = "NV"/>
+   <region name = "NY"/>
+   <region name = "OH"/>
+   <region name = "OK"/>
+   <region name = "OR"/>
+   <region name = "PA"/>
+   <region name = "RI"/>
+   <region name = "SC"/>
+   <region name = "SD"/>
+   <region name = "TN"/>
+   <region name = "TX"/>
+   <region name = "UT"/>
+   <region name = "VA"/>
+   <region name = "VT"/>
+   <region name = "WA"/>
+   <region name = "WI"/>
+   <region name = "WV"/>
+   <region name = "WY"/>
+   <region name = "California grid"/>
+   <region name = "Texas grid"/>
+   <region name = "Southwest grid"/>
+   <region name = "Central East grid"/>
+   <region name = "Central Northeast grid"/>
+   <region name = "Central Southwest grid"/>
+   <region name = "Florida grid"/>
+   <region name = "Mid-Atlantic grid"/>
+   <region name = "Northwest grid"/>
+   <region name = "Southeast grid"/>
+   <region name = "Central Northwest grid"/>
+   <region name = "New York grid"/>
+   <region name = "New England grid"/>
+   <region name = "Alaska grid"/>
+   <region name = "Hawaii grid"/>
+    <supplyDemandQuery title="elec investment capacity factor">
+        <axis1 name="sector">technology</axis1>
+        <axis2 name="Year">technology[@year]</axis2>
+        <xPath buildList="true" dataName="output" group="false" sumAll="false">
+          *[@type='sector' and (@name='baseload electricity' or @name='intermediate electricity' or @name='subpeak electricity' or @name='peak electricity')]//capacity-factor/node()
+        </xPath>
+        <comments/>
+    </supplyDemandQuery>
+  </aQuery>
+  <aQuery>
+    <supplyDemandQuery title="nonCO2 emissions by region">
+      <axis1 name="GHG">GHG</axis1>
+      <axis2 name="Year">emissions</axis2>
+      <xPath builList="true" dataName="emissions" group="false" sumAll="false">
+        *[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+            *[@type = 'GHG']/emissions/node()
+      </xPath>
+      <commens/>
+    </supplyDemandQuery>
+  </aQuery>
+</queries>

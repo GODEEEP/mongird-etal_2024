@@ -227,7 +227,8 @@ packrat/lib*/
 */input_data/infrastructure_data_csv
 */input_data/raster_data/
 */input_data/tmp
-*/input_data/gcam_data
+*/input_data/gcam_data/bau_ira_ccs_climate
+*/input_data/gcam_data/nz_ira_ccs_climate
 */input_data/gridcerf
 */input_data/west_raster_data
 */input_data/compiled_raster_data
