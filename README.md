@@ -1,5 +1,5 @@
 
-# mongird-etal_2024_commun_earth_environ
+# mongird-etal_2024
 
 **Title:** High-resolution analysis of power plant land requirements for net zero in the Western United States indicates coordinated land use policies will be essential
 
@@ -20,17 +20,17 @@ Transitioning towards a decarbonized power grid and net-zero economy will requir
 ### Input data
 |              Dataset              |                                   DOI                                    |
 |:---------------------------------:|:------------------------------------------------------------------------:|
-|  CERF GODEEEP Power Plant Sitings  |                          https://doi.org/10.5281/zenodo.13695663                                |
+|  CERF GODEEEP Power Plant Sitings  |                          https://doi.org/10.5281/zenodo.13695663                              |
 | GRIDCERF Geospatial Raster Layers |                     https://doi.org/10.57931/2281697                     |
 |      GCAM-USA GODEEEP Output      |                 https://doi.org/10.5281/zenodo.10642507                  |
 |  Renewable Capacity Factor Data   |                 https://doi.org/10.5281/zenodo.10214348                  | 
 
 ### Output data
-The post-processed files (resulting from the analysis scripts itemized below) are stored in the /data directory in this meta-repository.
+The post-processed files (resulting from the analysis scripts itemized below) are are available at the following DOI.
 
-|       Dataset       |                                Repository Link                                |                   DOI                   |
-|:-------------------:|:-----------------------------------------------------------------------------:|:---------------------------------------:|
-| Post-Processed Data |  |  |
+|       Dataset       |                  DOI                   |
+|:-------------------:|:-----------------------------------------------------------------------------:|
+| Analysis Data Output |  https://doi.org/10.5281/zenodo.13698211 |
 
 
 ## Contributing modeling software
@@ -47,7 +47,7 @@ The post-processed files (resulting from the analysis scripts itemized below) ar
 Clone this repository to get access to the notebooks used to conduct the analysis. You'll also need 
 to download the input files into the `data/input_data` directory. Each notebook that requires input data will specify where to download the data. 
 Once you have the input datasets downloaded you can use the following 
-notebooks to rerun the analysis and produce the post-processed data wich is stored in the `data/output_data` directory. 
+notebooks to rerun the analysis and produce the post-processed data. 
 
 To complete the analysis end to end, run the following notebooks:
 
@@ -62,7 +62,7 @@ To complete the analysis end to end, run the following notebooks:
 
 
 ## Reproduce my figures
-Use the following notebooks to reproduce the main and supplementary figures used in this publication.
+Use the following notebooks to reproduce the figures in this publication.
 
 | Figure Numbers |                Script Name                 |                                  Description                                   | 
 |:--------------:|:------------------------------------------:|:------------------------------------------------------------------------------:|
