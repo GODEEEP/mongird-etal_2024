@@ -3,6 +3,8 @@
 
 **Title:** High-resolution analysis of power plant land requirements for net zero in the Western United States indicates coordinated land use policies will be essential
 
+**Authors:**
+Kendall Mongird, Cameron Bracken, Casey D. Burleyson, Konstantinos Oikonomou, Yang Ou, Jennie S. Rice, Travis Thurber, Nathalie Voisin 
 
 \* corresponding author: kendall.mongird@pnnl.gov
 
