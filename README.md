@@ -6,7 +6,7 @@
 
 \* corresponding author: kendall.mongird@pnnl.gov
 
-![Projected Power Plant Sitings under Decarbonization](https://github.com/GODEEEP/mongird-etal_2024_tbd/blob/main/figures/fig_2_sitings_by_scenario_year.png)
+![Projected Power Plant Sitings under Decarbonization](https://github.com/GODEEEP/mongird-etal_2024_tbd/blob/main/figures/fig_2_sitings_by_scenario_year_2050.png)
 
 ## Abstract
 
