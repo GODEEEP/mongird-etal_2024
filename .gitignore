@@ -221,9 +221,7 @@ packrat/lib*/
 
 # notebook outputs and inputs
 */input_data/conus_shp
-*/input_data/wecc_boundary_shp
-*/input_data/wecc_shp
-*/input_data/transmission_shp
+/input_data/wecc_shp
 */input_data/infrastructure_data_csv
 */input_data/raster_data/
 */input_data/tmp
@@ -234,9 +232,12 @@ packrat/lib*/
 */input_data/compiled_raster_data
 */input_data/siting_shp
 */input_data/renewable_capacity_factor_data
-*.csv
-
-
+*/input_data/power_plant_siting_data/power_plant_additions_1km_net_zero.csv
+*/input_data/power_plant_siting_data/power_plant_additions_1km_bau.csv
+*/input_data/power_plant_siting_data/power_plants_net_zero.csv
+*/input_data/power_plant_siting_data/power_plants_bau.csv
+/input_data/wrf_template_data/nc_sample_data.nc
+*data/output_data
 *.idea
 
 /notebooks/clip_raster_extent.ipynb
